@@ -12,14 +12,11 @@ export class ConnectionService {
 
   readonly BASE_URL = 'https://rickandmortyapi.com/api/'
 
-  // readonly CHARACTER_URL = ''
-
-  // readonly LOCATION_URL = ''
-
-  // readonly EPISODE_URL = ''
+ pages: any;
 
   constructor(private http: HttpClient) {
 this.getCharacter(1)
+this.getPages()
   }
 
   getCharacter(id: number): Observable<Character> {
@@ -39,8 +36,20 @@ this.getCharacter(1)
 //   }))
 //  }
 
+// getCharacters(name: string): Observable<any>{
+//   return this.http.get(this.BASE_URL + 'character/?page={{this.pages}}&name=' + name)
+// }+
+
 getCharacters(name: string): Observable<any>{
-  return this.http.get(this.BASE_URL + 'character/?page=1&name=' + name)
+  let res: any;
+  // for (let i = 2; i < this.pages -1; i++) {
+      res = this.http.get(this.BASE_URL + 'character/?page=' + 2 +'&name=' + name)
+//   }
+  return res;
+}
+
+getPages(): any{
+ this.http.get<any>(this.BASE_URL + 'character').subscribe(data => {this.pages = data.info.pages, console.log(this.pages)})
 }
 
 }

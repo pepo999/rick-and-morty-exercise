@@ -9,6 +9,6 @@ import { Character } from '../model/character';
 export class CharacterComponent {
 
   @Input()
-  character?: any;
+  character?: Character;
 
 }

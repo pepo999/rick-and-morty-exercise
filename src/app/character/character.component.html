@@ -1,1 +1,11 @@
-<span>{{character.name}}</span>
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>{{character?.name}}</mat-card-title>
+    <mat-card-subtitle>{{character?.species}}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="{{character?.image}}" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+
+  </mat-card-content>
+</mat-card>
+

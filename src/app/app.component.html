@@ -1,12 +1,23 @@
-<form [formGroup]="searchForm">
-<input type="text" name="" formControlName="search" placeholder="search character" id="">
-</form>
+
+  <mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>{{title}}</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
 
 
-<ng-container *ngIf="characterList?.length" else notFound>
-  <div *ngFor="let character of characterList">
-    <app-character [character]="character"></app-character>
+  <div>
+    <form [formGroup]="searchForm">
+      <input type="text" name="" formControlName="search" placeholder="search character" id="">
+      </form>
+
+
+      <div *ngIf="characterList?.length" class="container">
+        <div *ngFor="let character of characterList" >
+          <app-character [character]="character"></app-character>
+        </div>
+      </div>
+
+      <ng-container *ngIf="!characterList?.length">NOT FOUND</ng-container>
   </div>
-</ng-container>
 
-<ng-container #notFound>NOT FOUND</ng-container>
