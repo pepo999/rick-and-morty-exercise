@@ -1,5 +1,7 @@
 @use '@angular/material' as mat;
 
+@include mat.core();
+
 $indigo-palette: (
     50 : #eef5fb,
     100 : #d4e5f5,
@@ -68,7 +70,7 @@ $yellow-palette: (
 
 
 
-@include mat.core();
+
 
 // Define a dark theme
 $dark-theme: mat.define-dark-theme((
@@ -94,9 +96,9 @@ $light-theme: mat.define-light-theme((
 @include mat.button-theme($dark-theme);
 
 // Apply the light theme only when the user prefers light themes.
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
  // Use the `-color` mixins to only apply color styles without reapplying the same
  // typography and density styles.
- @include mat.core-color($light-theme);
- @include mat.button-color($light-theme);
+//  @include mat.core-color($light-theme);
+//  @include mat.button-color($light-theme);
 }

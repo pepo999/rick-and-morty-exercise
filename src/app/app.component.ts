@@ -19,11 +19,11 @@ export class AppComponent {
 
   static id: number;
 
-  public characterList: Character[]= [];
+  public characterList: Character[] = [];
 
   constructor(private connService: ConnectionService) {
 
-    connService.getCharacter(1).subscribe(data => console.log(data))
+    // connService.getCharacter(1).subscribe(data => console.log(data))
 
     // connService.getCharacters().subscribe(characters => console.log(characters))
 
@@ -33,7 +33,7 @@ export class AppComponent {
       switchMap((v) => this.connService.getCharacters(v))
     ).subscribe(
       (v) => {
-        this.characterList = v?.results
+        this.characterList = v!.results
       }
     )
 

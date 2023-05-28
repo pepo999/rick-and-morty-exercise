@@ -15,15 +15,10 @@ export class ConnectionService {
  pages: any;
 
   constructor(private http: HttpClient) {
-this.getCharacter(1)
 this.getPages()
   }
 
-  getCharacter(id: number): Observable<Character> {
-   return this.http.get<any>(this.BASE_URL + 'character/' + id)
-  }
-
-//  getCharacters(name: string): Observable<Character[]> {
+//  getCharacters(name: string): Observable<any> {
 //   return this.http.get<any>(this.BASE_URL + 'character').pipe(switchMap(characters => {
 //     const results = characters.results;
 //     const getArr = [];
@@ -36,17 +31,26 @@ this.getPages()
 //   }))
 //  }
 
-// getCharacters(name: string): Observable<any>{
-//   return this.http.get(this.BASE_URL + 'character/?page={{this.pages}}&name=' + name)
-// }+
-
 getCharacters(name: string): Observable<any>{
-  let res: any;
-  // for (let i = 2; i < this.pages -1; i++) {
-      res = this.http.get(this.BASE_URL + 'character/?page=' + 2 +'&name=' + name)
-//   }
-  return res;
+  return this.http.get(this.BASE_URL + 'character/?page={{this.pages}}&name=' + name)
 }
+
+// getCharacters(name: string): Observable<any>{
+//   let res: any;
+//   let pagesOfCharacter: number;
+//   this.http.get<any>(this.BASE_URL + 'character/?name=' + name)?.subscribe(data => {
+//     pagesOfCharacter = data.info.pages,
+//      console.log(pagesOfCharacter)
+//      for (let i = 1; i < pagesOfCharacter; i++) {
+//       res = this.http.get(this.BASE_URL + 'character/?page=' + i +'&name=' + name)
+//   }
+//   })
+//   // for (let i = 1; i < this.pages - 1; i++) {
+
+//   //     res = this.http.get(this.BASE_URL + 'character/?page=' + i +'&name=' + name)
+//   // }
+//   return res;
+// }
 
 getPages(): any{
  this.http.get<any>(this.BASE_URL + 'character').subscribe(data => {this.pages = data.info.pages, console.log(this.pages)})

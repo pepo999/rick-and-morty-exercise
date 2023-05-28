@@ -3,13 +3,23 @@
     <mat-toolbar-row>
       <span>{{title}}</span>
     </mat-toolbar-row>
+        <mat-toolbar-row>
+          <!-- <form [formGroup]="searchForm">
+            <input type="text" name="" formControlName="search" placeholder="search character" id="">
+            </form> -->
+            <form class="example-form" [formGroup]="searchForm">
+              <mat-form-field class="example-full-width">
+                <mat-label>Search Character</mat-label>
+                <input matInput placeholder="Ex. Rick" value=""  type="text" name="" formControlName="search" placeholder="search character" id="">
+              </mat-form-field>
+              </form>
+        </mat-toolbar-row>
+
   </mat-toolbar>
 
 
   <div>
-    <form [formGroup]="searchForm">
-      <input type="text" name="" formControlName="search" placeholder="search character" id="">
-      </form>
+
 
 
       <div *ngIf="characterList?.length" class="container">
