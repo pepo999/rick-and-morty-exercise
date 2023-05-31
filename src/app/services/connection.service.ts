@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, switchMap, forkJoin } from 'rxjs';
-import { Character } from '../model/character';
-import { Location } from '../model/character';
-import { Episode } from '../model/episode';
+
 
 @Injectable({
   providedIn: 'root'
